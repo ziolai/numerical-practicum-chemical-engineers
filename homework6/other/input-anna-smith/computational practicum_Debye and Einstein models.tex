@@ -1,0 +1,140 @@
+%\documentclass[12pt,twoside,openright,a4paper]{report}  
+%\documentclass[english]{report}  
+\documentclass[english]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{tabularx,colortbl}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{babel}
+\usepackage{ragged2e}
+\usepackage{indentfirst}
+\usepackage{textcomp}
+\usepackage[official]{eurosym}
+\usepackage[labelformat=empty]{caption}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{caption}
+
+\begin{document}
+
+
+
+
+\title{Computational practicum - Models for the heat capacity}
+
+
+%% Use Arabic numerals for the page numbers of the chapters.
+%\mainmatter
+
+\maketitle
+%\onehalfspacing
+
+
+\section{Einstein and Debye models}
+
+Einstein developed in 1907 a model for the heat capacity at constant volume $C_V$ based on the following assumptions:
+\begin{itemize}
+\item all atoms in a crystal vibrate independently of each other
+\item these atoms vibrate with a single vibration frequency $w_e$
+\item atoms are assumed to behave as harmonic oscillators
+\end{itemize}
+
+The energy states associated with the vibrational motions with frequency $w_e$ are given by:
+\begin{equation}
+\epsilon_n = (n + 1/2)hw_e
+\end{equation}
+where the quantum number $n$=0, 1, 2 etc, and $h$ is Planck constant. 
+
+The partition function for a crystal of N atoms in the model of Einstein is given by:
+\begin{equation}
+Z(N, V, T) = \sum_{states~i}e^{-E_i(N, V)/kT}
+\end{equation}
+
+In this equation, the energy $E_i(N, V)$ is made of two components: a first contribution from the interaction energies $u$ of the atoms with each other which we write $E^{int}=Nu$, and a second contribution from the vibrational motions.
+
+We can thus write the partition function as follows:
+\begin{equation}
+Z(N, V, T) = e^{-E^{int}(N, V)/kT}(\sum_{states~n}e^{-\epsilon_n/kT})^{3N} 
+\end{equation}
+or
+\begin{equation}
+Z(N, V, T) = e^{-E^{int}(N, V)/kT}(q_{vib})^{3N}
+\end{equation}					
+where $q_{vib}$ is the single particle vibrational function $q_{vib}=\sum_{n=0}^{n=\infty}e^{-\epsilon_n/kT}$
+
+{\color{blue}{Derive the expression for the partition function of the crystal of N atoms as function of the Einstein vibrational temperature $\theta_E=hw_e/k$.
+Show that the heat capacity in this model is given by:
+\begin{equation}
+C_V(\theta_{E})  =3Nkx^{2}\frac{e^{-x}}{[1-e^{-x}]^{2}},\;\;\: where\;x=\frac{\theta_{E}}{T}
+\end{equation}}}
+
+The limit of $C_V(\theta_{E})$ when T approaches zero is given by 
+\begin{equation}
+C_V(\theta_{E})  =3Nkx^{2}e^{-x}
+\end{equation}
+which leads to $C_V(\theta_{E})$ = 0 at 0 K in accordance with the third law of thermodynamics. However, it is observed experimentally that $C_V$ goes to zero as $T^3$ and not following an exponential decay. 
+
+The approximation of atoms vibrating independently of each other is a crude one that leads to the discrepancies observed with the experiments. Debye developed in 1912 a model that accounts for collective lattice vibrations, and assumes a frequency distribution between 0 and a cut-off frequency $w_D$, with a frequency distribution between those two values given by $g(w) = \alpha w^2$. The corresponding heat capacity model is given by: 
+\begin{equation}
+C_V(\theta_{D})  =9Nk\left(\frac{T}{\theta_{D}}\right)^{3}\intop_{0}^{\,\,\, \theta_{D}/T}\frac{e^x x^{4}}{[e^x-1]^{2}} dx\;\;\: where\; x=\frac{\theta_{D}}{T}
+\end{equation}
+
+\section{Fitting Cu heat capacity data}
+You are given the molar heat capacity data at constant pressure $C_{p,m}$ of copper between ... and ... K. 
+
+1. Why can we approximate the heat capacity at constant pressure $C_{p,m}$ with the heat capacity at constant volume $C_{V,m}$ in this case?
+
+2. The Einstein temperature of Cu is $\theta_{E(Cu)} = $. Fit the data for Cu with the following Einstein model:
+\begin{equation}
+C_{V,m}(\theta_{E}) & =3Rx^{2}\frac{e^x}{[e^x-1]^{2}},\;\;\: x=\frac{\theta_{E}}{T} 
+\end{equation}
+Note the use of $R = N_{Av}k$ is this equation to fit molar heat capacity data. 
+\\
+3. When fitting such model to an unknown material, the characteristic Einstein temperature will need to be optimized too in the fitting process. Using a {\color{red}{Levenbergh Marquardt (or other)}}  iteration algorithm, derive the Einstein temperature yourself. 
+\\
+4. The Debye temperature of Cu is $\theta_{D(Cu)} = $. Fit the data for Cu with the following Debye model:
+\begin{equation}
+C_{V,m}(\theta_{D}) & =9R\left(\frac{T}{\theta_{D}}\right)^{3}\intop_{0}^{\,\,\, \theta_{D}/T}\frac{e^x x^{4}}{[e^x-1]^{2}} dx,\;\;\: x=\frac{\theta_{D}}{T} 
+\end{equation}
+\\
+5. When fitting such model to an unknown material, the characteristic Debye temperature will need to be optimized too in the fitting process. Using a {\color{red}{Levenbergh Marquardt (or other)}}  iteration algorithm, derive the Debye temperature yourself. 
+
+\section{Fitting heat capacity data of more complex materials}
+
+Fitting heat capacity data on materials with more than one chemical species cannot be done satisfactorily with an Einstein or Debye model alone as these do not capture the complexity of the lattice vibrations. One can fit with different models over certain temperature ranges. 
+
+In the low-temperature region (below typically $T$ = 10-20 K), the lattice contribution can be modelled using an harmonic-lattice model \cite{2003Majzlan}, as given by equation (\ref{eq:harmonic_model}), where the number of required terms augments with the high temperature limit of the fit:
+\begin{equation}
+C_{latt}=\sum B_{n}T^{n},\;\;\;\; where\; n=3,5,7,9...
+\label{eq:harmonic_model}
+\end{equation}
+
+
+The electronic contribution of the conduction electrons at the Fermi surface are expressed with a linear term $\gamma T$ \cite{1966Gopal}.
+
+In the high-temperature region, the lattice contribution is modelled using a combination of Debye and Einstein functions \cite{2020Rosen}, as expressed in equation (\ref{eq:lattice_fitting}). The sum ($n_D + n_{E1} + n_{E2}$) should be close to the number of atoms in the formula unit. 
+
+\begin{equation}
+C_\textup{p,m}=n_{D}D(\theta_{D})+n_{E1}E(\theta_{E1})+n_{E2}E(\theta_{E2})
+\label{eq:lattice_fitting}
+\end{equation}
+where $D(\theta_{D})$, $E(\theta_{E1})$ and $E(\theta_{E2})$ are the Debye and Einstein functions, respectively, as written in equations (\ref{eq:debye_eq}) and (\ref{eq:einstein_eq2}). $\theta_{D}$, $\theta_{E1}$, and $\theta_{E2}$ are the characteristic Debye and Einstein temperatures. $n_D$, $n_{E1}$, and $n_{E2}$  are adjustable parameters, whose sum ($n_D + n_{E1} + n_{E2}$) should be approximately equal to the number of atoms in the formula unit.
+\begin{equation}
+D(\theta_{D}) & =9R\left(\frac{T}{\theta_{D}}\right)^{3}\intop_{0}^{\,\,\, \theta_{D}/T}\frac{e^x x^{4}}{[e^x-1]^{2}} dx
+\label{eq:debye_eq} 
+\end{equation}
+
+\begin{equation}
+E(\theta_{E}) & =3Rx^{2}\frac{e^x}{[e^x-1]^{2}},\;\;\: x=\frac{\theta_{E}}{T} \label{eq:einstein_eq2} 
+\end{equation}
+where $R$ is the universal gas constant. 
+
+1. You are given data for BaMoO$_4$. Fit the data below $T$ = 16 K using the harmonic lattice model as given by equation (\ref{eq:harmonic_model}).  The electronic specific heat of BaMoO$_4$ is zero, as could be expected for such an insulating material. 
+
+2. Fit the data above $T$ = 16 K with a Debye and Einstein fit. What are the derived characteristic temperatures and sum ($n_D + n_{E1} + n_{E2}$)?
+
+\end{document}
