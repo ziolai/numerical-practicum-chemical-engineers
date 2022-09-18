@@ -21,11 +21,19 @@ Course description follows.
 - [Time Integration of Initial Value Problems](homework3/notebooks/HW3-time-integration-ivp.ipynb)
 - [Solving Fisher as Reaction-Diffusion Systems in Pursuit of Turing Patterns](homework3/notebooks/HW3-fisher.ipynb)
 - [Solving Brusselator as Reaction-Diffusion Systems in Pursuit of Turing Patterns](homework3/notebooks/HW3-brusselator.ipynb) 
-
 5. Pictograms of [homework assignments](pictograms.ipynb)
 
-## Section 2/: Overview of the Second Quarter 
+## Section 2/: Overview of the Second Quarter
 
+<b> Courses running simultaneously in Q2 </b>
+1. Applied Transport Phenomena (ATP; dr. Tom Burdyny & dr. Alina Rwei)
+2. Engineering Thermodynamics (ETD; dr. Anna Smith & NN)
+3. Inorganic Materials Engineering (IME; prof. Laurens Siebbeles & prof. Arjan Houtepen)
+4. Interfaces & Particles (I&P; dr. Laura Rossi & dr. Valeria Garbin)
+5. Organic Materials Engineering (OME; dr. Eduardo Mendes & dr. Pouyan Boukany)
+6. Reactors & Kinetics (RnK; prof. Atsushi Urakawa & prof. Ruud van Ommen)
+
+<b> Homework Assignments suggested earlier</b> 
 1. HW4: Week 10 and Week 11 - 10 hours 
 - [Non-Linear Least-Squares Problems - Estimating Parameters in Reaction Systems](homework5/notebooks/HW5-ode-reactors.ipynb)
 
@@ -35,7 +43,7 @@ Course description follows.
 3. HW6: Week 13 and Week 14 - 10 hours
 - Machine Learning Assignment and imagine recognition for industrial furnaces in Collaboration with Danieli-Corus in Ijmuiden; 
 
-4. Visit to Shell Pernis Week 15 
+4. Visit to Shell Pernis Week 15 (?)
 
 ## Section 3/: Course Overview 
 
@@ -241,19 +249,11 @@ Assignments will be deployed to students in November 2022;
 2. FFT of Heart Rate Signals; 
 3. Growth Model;
 4. SVD decomposition applied to images [tutorial](https://numpy.org/numpy-tutorials/content/tutorial-svd.html); 
-5. Matrix-Free implementation of the Laplacian for use inside non-linear iteration [tutorial](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html);  
+5. Matrix-Free implementation of the Laplacian for use inside non-linear iteration [tutorial](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html); 
 
 
-```julia
-
-```
 
 
-```julia
-
-```
-
-
-```julia
+```python
 
 ```
